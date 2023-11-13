@@ -1,7 +1,7 @@
 import re
 from bs4 import BeautifulSoup
 
-def extract_emails_from_html(filename):
+def extract_emails_from_html(filename="tempPage.html"):
     """
     Extracts email addresses from an HTML file for a specific region.
 

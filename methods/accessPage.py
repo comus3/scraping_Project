@@ -20,6 +20,8 @@ def fetch_and_save_html(link, filename='tempPage.html'):
         print(f"HTML content successfully fetched and saved to {filename}")
     except requests.exceptions.RequestException as e:
         print(f"Error fetching HTML content: {e}")
+        return 1
+    return 0
 
 # Example usage:
 url_to_fetch = 'https://www.ffc.fr/clubs/?fwp_disciplines=route&fwp_club_region=auvergne-rhone-alpes&fwp_club_activity=route'
