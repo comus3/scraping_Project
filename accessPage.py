@@ -9,8 +9,8 @@ def fetch_and_save_html(link, filename='tempPage.html'):
     - filename: The name of the file to save the HTML content (default is 'tempPage.html').
     """
     try:
-        # Fetch HTML content from the link
-        response = requests.get(link)
+        # Fetch HTML content from the link with SSL verification disabled
+        response = requests.get(link, verify=False)
         response.raise_for_status()  # Check for errors in the HTTP response
 
         # Save HTML content to a file
@@ -22,5 +22,5 @@ def fetch_and_save_html(link, filename='tempPage.html'):
         print(f"Error fetching HTML content: {e}")
 
 # Example usage:
-url_to_fetch = 'https://www.example.com'
+url_to_fetch = 'https://www.ffc.fr/clubs/?fwp_disciplines=route&fwp_club_region=auvergne-rhone-alpes&fwp_club_activity=route'
 fetch_and_save_html(url_to_fetch)
