@@ -36,10 +36,10 @@ def extract_emails_from_html(filename="tempPage.html"):
 
     return emails
 
-# Example usage:
-html_filename = 'tempPage.html'
-result_emails = extract_emails_from_html(html_filename)
+# # Example usage:
+# html_filename = 'tempPage.html'
+# result_emails = extract_emails_from_html(html_filename)
 
-print("Email addresses for the specified region:")
-for email in result_emails:
-    print(email)
+# print("Email addresses for the specified region:")
+# for email in result_emails:
+#     print(email)
