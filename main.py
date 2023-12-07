@@ -1,4 +1,4 @@
-from methods import accessPage,createLinks,findDataValues,findMail
+from methods import accessPage,createLinks,findDataValues,findMail,writeToCSV
 import json
 
 
@@ -15,6 +15,7 @@ def write_dict_to_file(dictionary, filename='output.txt'):
 
 
 def run_fetch_and_save_with_retry(link, max_retries=5):
+    print("fetching html for {}".format(link))
     for _ in range(max_retries):
         result = accessPage.fetch_and_save_html(link)
         if result == 1:
@@ -31,11 +32,22 @@ def run_fetch_and_save_with_retry(link, max_retries=5):
 locations = findDataValues.createLocationLinks()
 linkList = createLinks.createLinkList(locations)
 
-output = {}
+csvParser = ","
+output = ""
 
-index = 0
 for link in linkList:
-    output[locations[index]] = run_fetch_and_save_with_retry(link)
-    index = index + 1
+    for email in run_fetch_and_save_with_retry(link):
+        output = output + csvParser + email
+print(output)
+writeToCSV.write_to_csv(output)
+
+
+
+# output = {}
+
+# index = 0
+# for link in linkList:
+#     output[locations[index]] = run_fetch_and_save_with_retry(link)
+#     index = index + 1
     
-write_dict_to_file(output)
+# write_dict_to_file(output)
